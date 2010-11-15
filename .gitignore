@@ -6,4 +6,5 @@ project/build/target/
 project/plugins/target/
 project/plugins/lib_managed/
 project/plugins/src_managed/b_managed/
-
+project/*.iml
+.idea

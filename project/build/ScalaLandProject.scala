@@ -4,7 +4,7 @@ import de.element34.sbteclipsify._
 class ScalaLandProject(info: ProjectInfo) extends DefaultProject(info) 
     with SbtEclipsifyPlugin{
 
-  val scalatest = "org.scalatest" % "scalatest" % "1.0.1-for-scala-2.8.0.Beta1-with-test-interfaces-0.3-SNAPSHOT" % "test" 
+  val scalatest = "org.scalatest" % "scalatest" % "1.2" % "test" 
 
  // ------------------------------------------------------------
   // repositories
