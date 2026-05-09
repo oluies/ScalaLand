@@ -29,14 +29,14 @@ trait Thief extends Character{
   override def toString = super.toString + "\n is a thief"
 
   // Good climber
-  override def climb = Some(strength + Dice.roll(1))
+  override def climb: Option[Int] = Some(strength + Dice.roll(1))
 }
 
 trait Warrior extends Character {
   override def toString = super.toString + "\n is a warrior"
 
   // Decent climber
-  override def climb = Some(Dice.roll(1))
+  override def climb: Option[Int] = Some(Dice.roll(1))
 
   // Good fighter
   override def physicalAttack(): Option[(Int, Int) => Int] = {
