@@ -2,7 +2,7 @@ package com.programmera.scalaland_trait
 
 trait Elf extends Creature {
 
-  override protected def generateCreatureFeatures() {
+  override protected def generateCreatureFeatures(): Unit = {
     strength = DieRoll.roll(2)
     wisdom = DieRoll.roll(4)
     charisma = DieRoll.roll(4) 

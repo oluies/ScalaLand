@@ -13,13 +13,13 @@ trait Creature {
 
   // Setters and Getters 
   def strength = _strength 
-  def strength_=(s: Int) { _strength = s }
-  def wisdom = _wisdom 
-  def wisdom_=(w: Int) { _wisdom = w }
-  def charisma = _charisma 
-  def charisma_=(c: Int) { _charisma = c }
-  def hitpoints= _hitpoints 
-  def hitpoints_=(h: Int) { 
+  def strength_=(s: Int): Unit = { _strength = s }
+  def wisdom = _wisdom
+  def wisdom_=(w: Int): Unit = { _wisdom = w }
+  def charisma = _charisma
+  def charisma_=(c: Int): Unit = { _charisma = c }
+  def hitpoints= _hitpoints
+  def hitpoints_=(h: Int): Unit = {
     println("Hitpoints, old value: " + hitpoints + ", new value: " + h)
     if (h > 0)
       _hitpoints = h
@@ -28,7 +28,7 @@ trait Creature {
   }
  
   // Called during initialization of the instance
-  protected def generateCreatureFeatures() {
+  protected def generateCreatureFeatures(): Unit = {
     throw new IllegalArgumentException("Creature has no race! " +
       "You must mix in a race during instanciation.")
   }

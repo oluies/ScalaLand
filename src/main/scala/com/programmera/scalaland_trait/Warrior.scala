@@ -10,7 +10,7 @@ trait Warrior extends Professional {
   }
 
   // Good fighter
-  override def weaponAttack(foe: Creature) {
+  override def weaponAttack(foe: Creature): Unit = {
     println("Warrior using weaponAttack.")
     val damage =  (this.strength - foe.strength)/2 + DieRoll.roll(2)
     sufferDamage(foe, damage)

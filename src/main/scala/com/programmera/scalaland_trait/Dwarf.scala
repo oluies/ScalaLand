@@ -2,7 +2,7 @@ package com.programmera.scalaland_trait
 
 trait Dwarf extends Creature {
 
-  override protected def generateCreatureFeatures() {
+  override protected def generateCreatureFeatures(): Unit = {
     strength = DieRoll.roll(4)
     wisdom = DieRoll.roll(3)
     charisma = DieRoll.roll(2) 
