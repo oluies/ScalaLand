@@ -28,7 +28,7 @@ trait Professional extends Creature {
       val newHitpoints = foe.hitpoints - damage
       val newFoe = foe.updateHitpoints(newHitpoints)
       newFoe match {
-        case f: T => f
+        case f: T @unchecked => f
         case _ => throw new Exception("updateHitpoints returns wrong type")
       }
     }else{

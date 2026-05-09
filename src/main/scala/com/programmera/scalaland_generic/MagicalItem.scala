@@ -8,7 +8,7 @@ case class MagicalItem(
     modifiers.get(feature).getOrElse(0)
 
   override def toString = {
-    val modStr = modifiers.map{ x => x._1 +" "+ x._2 }.mkString(", ")
+    val modStr = modifiers.map{ x => s"${x._1} ${x._2}" }.mkString(", ")
     "%s (%s)".format(description, modStr)
   }
 }
