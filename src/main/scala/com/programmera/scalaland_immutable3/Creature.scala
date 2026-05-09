@@ -7,16 +7,16 @@ trait Creature {
   protected val _features: CreatureFeatureSet
 
   // Setters and Getters 
-  def strength = _features.strength 
+  def strength: Int = _features.strength 
   def withStrength(s: Int): Creature
 
-  def wisdom = _features.wisdom 
+  def wisdom: Int = _features.wisdom 
   def withWisdom(w: Int): Creature
 
-  def charisma = _features.charisma 
+  def charisma: Int = _features.charisma 
   def withCharisma(c: Int): Creature
 
-  def hitpoints= _features.hitpoints
+  def hitpoints: Int= _features.hitpoints
   def withHitpoints(h: Int): Creature
 
   // Called during initialization of the instance
@@ -26,7 +26,7 @@ trait Creature {
   }
 
   // Top level implemenentation, no need to call super
-  override def toString = """Creature: %s 
+  override def toString: String = """Creature: %s 
      | %s """.stripMargin.format(name, _features)
 
 }

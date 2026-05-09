@@ -9,7 +9,7 @@ trait Dwarf extends Creature {
     hitpoints = strength * 2
   }
 
-  override def toString = super.toString + "\n is a dwarf."
+  override def toString: String = super.toString + "\n is a dwarf."
 
 }
 

@@ -9,7 +9,7 @@ trait Elf extends Creature {
     hitpoints = strength * 2
   }
 
-  override def toString = super.toString + "\n is an elf."
+  override def toString: String = super.toString + "\n is an elf."
 
 }
 

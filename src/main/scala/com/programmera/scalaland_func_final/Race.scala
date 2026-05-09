@@ -9,7 +9,7 @@ class CharacterFeatureSet(
       val wisdom: Int, 
       val charisma: Int) {
 
-  override def toString = "(strength: %d, wisdom: %d, charisma: %d)".
+  override def toString: String = "(strength: %d, wisdom: %d, charisma: %d)".
     format(strength, wisdom, charisma)
 }
 
@@ -24,9 +24,9 @@ trait Race {
   protected var currentHitpoints: Int 
 
   // Inspectors
-  def strength = features.strength 
-  def wisdom = features.wisdom
-  def charisma = features.charisma
+  def strength: Int = features.strength 
+  def wisdom: Int = features.wisdom
+  def charisma: Int = features.charisma
 
   def generateFeatures: CharacterFeatureSet = {
     throw new IllegalArgumentException("Avatar has no race! " +
@@ -41,27 +41,27 @@ trait Race {
     println("Survived. Remaining hitpoints: "+ currentHitpoints)
   }
 
-  override def toString = "Name: %s \n %s \n hitpoints: %s ".
+  override def toString: String = "Name: %s \n %s \n hitpoints: %s ".
      format(name, features, currentHitpoints)
 }
 
 trait Elf extends Race { 
-  override def generateFeatures = new CharacterFeatureSet(
+  override def generateFeatures: CharacterFeatureSet = new CharacterFeatureSet(
     strength = Dice.roll(2),
     wisdom = Dice.roll(4),
     charisma = Dice.roll(4)
   )
 
-  override def toString = super.toString + "\n is an Elf" 
+  override def toString: String = super.toString + "\n is an Elf" 
 }
 
 trait Dwarf extends Race { 
-  override def generateFeatures = new CharacterFeatureSet(
+  override def generateFeatures: CharacterFeatureSet = new CharacterFeatureSet(
     strength = Dice.roll(4),
     wisdom = Dice.roll(3),
     charisma = Dice.roll(2)
   )
 
-  override def toString = super.toString + "\n is a Dwarf" 
+  override def toString: String = super.toString + "\n is a Dwarf" 
 }
 

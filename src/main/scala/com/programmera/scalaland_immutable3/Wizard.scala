@@ -1,7 +1,7 @@
 package com.programmera.scalaland_immutable3
 
 trait Wizard extends Professional {
-  override def toString = super.toString + "\n is a wizard."
+  override def toString: String = super.toString + "\n is a wizard."
 
   // Good with spells
   override def magicAttack(foe: Creature): Int = {

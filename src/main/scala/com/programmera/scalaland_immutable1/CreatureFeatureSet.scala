@@ -6,7 +6,7 @@ case class CreatureFeatureSet(
     charisma: Int,
     hitpoints: Int) {
 
-  override def toString = 
+  override def toString: String = 
     "(strength: %d, wisdom: %d, charisma: %d) hitpoints %d".
     format(strength, wisdom, charisma, hitpoints)
 }

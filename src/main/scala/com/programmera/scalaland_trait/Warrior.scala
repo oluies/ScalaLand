@@ -2,10 +2,10 @@ package com.programmera.scalaland_trait
 
 trait Warrior extends Professional {
 
-  override def toString = super.toString + "\n is a warrior."
+  override def toString: String = super.toString + "\n is a warrior."
 
   // Decent climber
-  override def climb = {
+  override def climb: Int = {
     DieRoll.roll(1)
   }
 

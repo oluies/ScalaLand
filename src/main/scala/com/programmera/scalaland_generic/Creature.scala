@@ -12,7 +12,7 @@ case class CreatureFeatureSet(
     charisma: Int,
     hitpoints: Int) {
 
-  override def toString = 
+  override def toString: String = 
     "(strength: %d, wisdom: %d, charisma: %d) hitpoints %d".
     format(strength, wisdom, charisma, hitpoints)
 }
@@ -31,20 +31,20 @@ trait Creature {
     features: CreatureFeatureSet): SubCreature
  
   // Setters and Getters 
-  def strength = features.strength 
-  def updateStrength(s: Int) =
+  def strength: Int = features.strength 
+  def updateStrength(s: Int): SubCreature =
     updateCreatureFeature(features.copy(strength = s))
 
-  def wisdom = features.wisdom 
-  def updateWisdom(w: Int) =
+  def wisdom: Int = features.wisdom 
+  def updateWisdom(w: Int): SubCreature =
     updateCreatureFeature(features.copy(wisdom = w))
 
-  def charisma = features.charisma 
-  def updateCharisma(c: Int) =
+  def charisma: Int = features.charisma 
+  def updateCharisma(c: Int): SubCreature =
     updateCreatureFeature(features.copy(charisma = c))
 
-  def hitpoints= features.hitpoints
-  def updateHitpoints(h: Int) = {
+  def hitpoints: Int= features.hitpoints
+  def updateHitpoints(h: Int): SubCreature = {
     println("setHitpoints() old value: " + hitpoints + ", new value: " + h)
     if(h > 0)
       updateCreatureFeature(features.copy(hitpoints = h))
@@ -59,7 +59,7 @@ trait Creature {
   }
 
   // Top level implemenentation, no need to call super
-  override def toString = """Creature: %s 
+  override def toString: String = """Creature: %s 
      | %s """.stripMargin.format(name, features)
 
 }
@@ -73,7 +73,7 @@ trait Elf extends Creature {
       charisma = DieRoll.roll(4),
       hitpoints = tmpStrength * 2)
   }
-  override def toString = super.toString + "\n is an elf."
+  override def toString: String = super.toString + "\n is an elf."
 }
 
 trait Dwarf extends Creature {
@@ -85,7 +85,7 @@ trait Dwarf extends Creature {
       charisma = DieRoll.roll(2),
       hitpoints = tmpStrength * 2)
   }
-  override def toString = super.toString + "\n is a dwarf."
+  override def toString: String = super.toString + "\n is a dwarf."
 }
 
 

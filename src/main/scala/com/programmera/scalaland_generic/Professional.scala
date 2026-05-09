@@ -3,7 +3,7 @@ package com.programmera.scalaland_generic
 trait Professional extends Creature {
 
   // Returns climbed meters
-  def climb = {
+  def climb: Int = {
     println("This character can not climb.");
     0
   }
@@ -38,19 +38,19 @@ trait Professional extends Creature {
 }
 
 trait Thief extends Professional {
-  override def toString = super.toString + "\n is a thief."
+  override def toString: String = super.toString + "\n is a thief."
 
   // Good climber
-  override def climb = {
+  override def climb: Int = {
     strength + DieRoll.roll(1)
   }
 }
 
 trait Warrior extends Professional {
-  override def toString = super.toString + "\n is a warrior."
+  override def toString: String = super.toString + "\n is a warrior."
 
   // Decent climber
-  override def climb = {
+  override def climb: Int = {
     DieRoll.roll(1)
   }
 
@@ -63,7 +63,7 @@ trait Warrior extends Professional {
 }  
 
 trait Wizard extends Professional {
-  override def toString = super.toString + "\n is a wizard."
+  override def toString: String = super.toString + "\n is a wizard."
 
   // Good with spells
   override def magicAttack[T <: Creature](foe: T): T = {

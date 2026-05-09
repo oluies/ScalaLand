@@ -34,7 +34,7 @@ class MagicalItemList {
     sum
   }
   
-  override def toString = {
+  override def toString: String = {
     var ret= "---- Magical Items ----"
     for (item <- items) {
       ret+= "\n "+ item

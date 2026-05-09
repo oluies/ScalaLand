@@ -33,22 +33,22 @@ object Avatar {
 
 class Avatar(val name: String) extends Character {
   protected var features = generateFeatures
-  val maxHitpoints  = features.strength * 3
+  val maxHitpoints: Int  = features.strength * 3
   protected var currentHitpoints = maxHitpoints
 
   protected var items: MagicalItemList = new MagicalItemList()
 
-  override def strength = features.strength +
+  override def strength: Int = features.strength +
     items.calculateModifier(CharacterFeature.Strength)
-  override def wisdom = features.wisdom +
+  override def wisdom: Int = features.wisdom +
     items.calculateModifier(CharacterFeature.Wisdom)
-  override def charisma = features.charisma +
+  override def charisma: Int = features.charisma +
     items.calculateModifier(CharacterFeature.Charisma)
 
   def addItem(item: MagicalItem): Unit = {
     items = items.add(item)
   }
 
-  override def toString = super.toString + "\n" + items
+  override def toString: String = super.toString + "\n" + items
 } 
 

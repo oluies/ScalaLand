@@ -15,18 +15,18 @@ class Avatar(
   extends Professional {
 
   // Fields
-  val items = optionalItems.getOrElse(new MagicalItemList())
+  val items: MagicalItemList = optionalItems.getOrElse(new MagicalItemList())
 
   // Initialize class
   protected val _features: CreatureFeatureSet =
     optionalFeatures.getOrElse(generateCreatureFeatures())
 
   // Override getters
-  override def strength = super.strength +
+  override def strength: Int = super.strength +
     items.calculateModifier(CreatureFeature.Strength)
-  override def wisdom = super.wisdom +
+  override def wisdom: Int = super.wisdom +
     items.calculateModifier(CreatureFeature.Wisdom)
-  override def charisma = super.charisma +
+  override def charisma: Int = super.charisma +
     items.calculateModifier(CreatureFeature.Charisma)
 
   // Private helper method used to update a feature 
@@ -66,7 +66,7 @@ class Avatar(
     Avatar(this.items.add(newItem), this._features, this)
 
   // super will call toString in Creature
-  override def toString = super.toString + "\n" + items.toString
+  override def toString: String = super.toString + "\n" + items.toString
 }
 
 object Avatar {

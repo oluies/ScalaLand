@@ -26,14 +26,14 @@ trait Character extends Race {
 }
 
 trait Thief extends Character{
-  override def toString = super.toString + "\n is a thief"
+  override def toString: String = super.toString + "\n is a thief"
 
   // Good climber
   override def climb: Option[Int] = Some(strength + Dice.roll(1))
 }
 
 trait Warrior extends Character {
-  override def toString = super.toString + "\n is a warrior"
+  override def toString: String = super.toString + "\n is a warrior"
 
   // Decent climber
   override def climb: Option[Int] = Some(Dice.roll(1))
@@ -50,7 +50,7 @@ trait Warrior extends Character {
 }  
 
 trait Wizard extends Character {
-  override def toString = super.toString + "\n is a wizard"
+  override def toString: String = super.toString + "\n is a wizard"
 
   // Good with spells
   override def magicalAttack(): Option[(Int, Int) => Int]  = {

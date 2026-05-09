@@ -5,8 +5,8 @@ abstract class Avatar(
     var strength: Int, 
     var wisdom: Int, 
     var charisma: Int) {
-  var hitpoints = strength * 2
-  override def toString = "Avatar: " + name +
+  var hitpoints: Int = strength * 2
+  override def toString: String = "Avatar: " + name +
     "\n (strength: "+ strength + ", wisdom: "+ wisdom +
     ", charisma: "+ charisma + ")"
 }

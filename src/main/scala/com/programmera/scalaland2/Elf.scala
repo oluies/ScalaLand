@@ -10,7 +10,7 @@ class Elf(
     startingStrength, 
     startingWisdom, 
     startingCharisma) {
-  override def toString = super.toString + "\n is an elf."
+  override def toString: String = super.toString + "\n is an elf."
 }
 
 

@@ -10,5 +10,5 @@ class Dwarf(
     startingStrength, 
     startingWisdom, 
     startingCharisma) {
-  override def toString = super.toString + "\n is a dwarf."
+  override def toString: String = super.toString + "\n is a dwarf."
 }

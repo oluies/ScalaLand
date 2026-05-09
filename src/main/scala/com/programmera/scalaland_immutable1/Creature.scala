@@ -11,19 +11,19 @@ trait Creature {
     newFeatures: CreatureFeatureSet): Creature
  
   // Setters and Getters 
-  def strength = _features.strength 
+  def strength: Int = _features.strength 
   def withStrength(s: Int): Creature =
     withCreatureFeature(_features.copy(strength = s))
 
-  def wisdom = _features.wisdom 
+  def wisdom: Int = _features.wisdom 
   def withWisdom(w: Int): Creature =
     withCreatureFeature(_features.copy(wisdom = w))
 
-  def charisma = _features.charisma 
+  def charisma: Int = _features.charisma 
   def withCharisma(c: Int): Creature =
     withCreatureFeature(_features.copy(charisma = c))
 
-  def hitpoints= _features.hitpoints
+  def hitpoints: Int= _features.hitpoints
   def withHitpoints(h: Int): Creature = {
     println("setHitpoints() old value: " + hitpoints + ", new value: " + h)
     if (h > 0)
@@ -39,7 +39,7 @@ trait Creature {
   }
 
   // Top level implemenentation, no need to call super
-  override def toString = """Creature: %s 
+  override def toString: String = """Creature: %s 
      | %s """.stripMargin.format(name, _features)
 
 }

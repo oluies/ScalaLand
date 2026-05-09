@@ -6,7 +6,7 @@ case class MagicalItem(
     wisdomModifier: Int = 0,
     charismaModifier: Int = 0) { 
 
-  override def toString = {
+  override def toString: String = {
     var ret: String = description + " ("
     if (strengthModifier != 0) ret += " str "+ strengthModifier
     if (wisdomModifier != 0) ret += " wis "+ wisdomModifier

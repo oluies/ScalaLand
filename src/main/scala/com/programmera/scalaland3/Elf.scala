@@ -1,7 +1,7 @@
 package com.programmera.scalaland3
 
 object Elf {
-  def apply(name: String) = 
+  def apply(name: String): Elf = 
     new Elf(
       name, 
       startingStrength = DieRoll.roll(2), 
@@ -20,7 +20,7 @@ class Elf(
     startingWisdom, 
     startingCharisma) {
 
-  override def toString = super.toString + "\n is an elf."
+  override def toString: String = super.toString + "\n is an elf."
 }
   
 

@@ -11,7 +11,7 @@ trait Elf extends Creature {
       charisma = DieRoll.roll(4),
       hitpoints = tmpStrength * 2)
   }
-  override def toString = super.toString + "\n is an elf."
+  override def toString: String = super.toString + "\n is an elf."
 }
 
 

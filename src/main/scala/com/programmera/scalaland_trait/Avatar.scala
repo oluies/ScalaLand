@@ -17,7 +17,7 @@ case class Avatar(name: String) extends Professional {
     items.calculateModifier(CreatureFeature.Charisma)
 
   // super will call toString in Professional
-  override def toString = super.toString + "\n" + items.toString 
+  override def toString: String = super.toString + "\n" + items.toString 
 
 }
 

@@ -3,7 +3,7 @@ package com.programmera.scalaland_trait
 trait Professional extends Creature {
 
   // Returns climbed meters
-  def climb = {
+  def climb: Int = {
     println("This character can not climb.")
     0
   }
