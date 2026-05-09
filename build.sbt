@@ -15,5 +15,14 @@ lazy val root = (project in file("."))
       "-Xfatal-warnings",
       "-Wunused:all",
       "-explain"
-    )
+    ),
+    // Exclude package-object files from scalafix. ExplicitResultTypes
+    // annotates re-exports as `val X: X.type = ...` which Scala 2.13
+    // (and the linter's diff check) reports as illegal cyclic
+    // references when type alias and val share a name. See
+    // .scalafix.conf for the same caveat.
+    Compile / scalafix / unmanagedSources :=
+      (Compile / unmanagedSources).value.filterNot(_.getName == "package.scala"),
+    Test / scalafix / unmanagedSources :=
+      (Test / unmanagedSources).value.filterNot(_.getName == "package.scala")
   )
