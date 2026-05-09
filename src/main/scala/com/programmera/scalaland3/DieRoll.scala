@@ -13,6 +13,6 @@ object DieRoll {
 }
 
 class DieRoll {
-  val result = (6 * math.random + 1).toInt
+  val result = (6 * math.random() + 1).toInt
 }
 

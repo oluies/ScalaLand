@@ -12,13 +12,13 @@ abstract class Avatar(
   // Setters and getters 
   def strength = _strength + 
     items.calculateModifier(CreatureFeature.Strength)
-  def strength_=(s: Int) { _strength = s }
-  def wisdom = _wisdom + 
+  def strength_=(s: Int): Unit = { _strength = s }
+  def wisdom = _wisdom +
     items.calculateModifier(CreatureFeature.Wisdom)
-  def wisdom_=(w: Int) { _wisdom = w }
-  def charisma = _charisma + 
+  def wisdom_=(w: Int): Unit = { _wisdom = w }
+  def charisma = _charisma +
     items.calculateModifier(CreatureFeature.Charisma)
-  def charisma_=(c: Int) { _charisma = c }
+  def charisma_=(c: Int): Unit = { _charisma = c }
   
   override def toString = "Avatar: " + name +
     "\n (strength: "+ _strength + ", wisdom: "+ _wisdom +

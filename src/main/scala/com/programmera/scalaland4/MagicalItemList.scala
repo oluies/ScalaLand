@@ -6,7 +6,7 @@ class MagicalItemList {
 
   private val items = ListBuffer[MagicalItem]()
 
-  def add(item: MagicalItem) {
+  def add(item: MagicalItem): Unit = {
     items += item
   }
 
