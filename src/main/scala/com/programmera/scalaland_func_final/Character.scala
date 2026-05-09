@@ -5,16 +5,15 @@ trait Character extends Race {
   // Returns climbed meters if successful
   def climb: Option[Int] = {
     println("This character can not climb.");
-    None 
+    None
   }
 
   // Returns function to calculate hitpoints reduction
   def physicalAttack(): Option[(Int, Int) => Int] = {
     println("Default physicalAttack.");
-    Some{
-      (foeStrength: Int, foeWisdom: Int) => 
-        val damage = (strength - foeStrength)/3 + Dice.roll(1)
-        if(damage > 0) damage else 0
+    Some { (foeStrength: Int, foeWisdom: Int) =>
+      val damage = (strength - foeStrength) / 3 + Dice.roll(1)
+      if (damage > 0) damage else 0
     }
   }
 
@@ -25,7 +24,7 @@ trait Character extends Race {
   }
 }
 
-trait Thief extends Character{
+trait Thief extends Character {
   override def toString: String = super.toString + "\n is a thief"
 
   // Good climber
@@ -41,26 +40,22 @@ trait Warrior extends Character {
   // Good fighter
   override def physicalAttack(): Option[(Int, Int) => Int] = {
     println("Warrior using physicalAttack.");
-    Some{
-      (foeStrength: Int, foeWisdom: Int) => 
-        val damage = (strength - foeStrength)/3 + Dice.roll(2)
-        if(damage > 0) damage else 0
+    Some { (foeStrength: Int, foeWisdom: Int) =>
+      val damage = (strength - foeStrength) / 3 + Dice.roll(2)
+      if (damage > 0) damage else 0
     }
   }
-}  
+}
 
 trait Wizard extends Character {
   override def toString: String = super.toString + "\n is a wizard"
 
   // Good with spells
-  override def magicalAttack(): Option[(Int, Int) => Int]  = {
+  override def magicalAttack(): Option[(Int, Int) => Int] = {
     println("Wizard using magicalAttack.");
-    Some{
-      (foeStrength: Int, foeWisdom: Int) => 
-        val damage = (wisdom- foeWisdom)/3 + Dice.roll(2)
-        if(damage > 0) damage else 0
+    Some { (foeStrength: Int, foeWisdom: Int) =>
+      val damage = (wisdom - foeWisdom) / 3 + Dice.roll(2)
+      if (damage > 0) damage else 0
     }
   }
-}  
-
-
+}

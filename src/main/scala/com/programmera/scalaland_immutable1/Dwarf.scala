@@ -8,11 +8,10 @@ trait Dwarf extends Creature {
       strength = tmpStrength,
       wisdom = DieRoll.roll(3),
       charisma = DieRoll.roll(2),
-      hitpoints = tmpStrength * 2)
+      hitpoints = tmpStrength * 2
+    )
   }
 
   override def toString: String = super.toString + "\n is a dwarf."
 
 }
-
-

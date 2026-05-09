@@ -17,21 +17,21 @@ trait Professional extends Creature {
   // Will if successful reduce hitpoints on foe
   def weaponAttack[T <: Creature](foe: T): T = {
     println("Default weaponAttack.");
-    val damage = (this.strength - foe.strength)/3 + DieRoll.roll(1)
+    val damage = (this.strength - foe.strength) / 3 + DieRoll.roll(1)
     sufferDamage(foe, damage)
   }
 
   protected def sufferDamage[T <: Creature](foe: T, damage: Int): T = {
-    println("Foes hitpoints before attack: "+ foe.hitpoints);
-    println("Damage: "+ damage);
-    if( damage > 0 ) {
+    println("Foes hitpoints before attack: " + foe.hitpoints);
+    println("Damage: " + damage);
+    if (damage > 0) {
       val newHitpoints = foe.hitpoints - damage
       val newFoe = foe.updateHitpoints(newHitpoints)
       newFoe match {
         case f: T @unchecked => f
         case _ => throw new Exception("updateHitpoints returns wrong type")
       }
-    }else{
+    } else {
       foe
     }
   }
@@ -57,10 +57,10 @@ trait Warrior extends Professional {
   // Good fighter
   override def weaponAttack[T <: Creature](foe: T): T = {
     println("Warrior using weaponAttack.");
-    val damage =  (this.strength - foe.strength)/2 + DieRoll.roll(2)
+    val damage = (this.strength - foe.strength) / 2 + DieRoll.roll(2)
     sufferDamage(foe, damage)
   }
-}  
+}
 
 trait Wizard extends Professional {
   override def toString: String = super.toString + "\n is a wizard."
@@ -68,9 +68,7 @@ trait Wizard extends Professional {
   // Good with spells
   override def magicAttack[T <: Creature](foe: T): T = {
     println("Wizard using magicAttack.");
-    val damage = (this.wisdom - foe.wisdom)/2 + DieRoll.roll(2)
+    val damage = (this.wisdom - foe.wisdom) / 2 + DieRoll.roll(2)
     sufferDamage(foe, damage)
   }
-}  
-
-
+}

@@ -17,9 +17,6 @@ trait Professional extends Creature {
   // Will if successful reduce hitpoints on foe
   def weaponAttack(foe: Creature): Int = {
     println("Default weaponAttack.")
-    (this.strength - foe.strength)/3 + DieRoll.roll(1)
+    (this.strength - foe.strength) / 3 + DieRoll.roll(1)
   }
 }
-  
-
-

@@ -1,8 +1,7 @@
 package com.programmera.scalaland_scala3_func
 
-/** A combat system parameterised over a `BattleSystem` `given`.
-  * Different rule sets (e.g. AD&D vs. World of Darkness) plug in
-  * different damage formulas without subclassing Avatar.
+/** A combat system parameterised over a `BattleSystem` `given`. Different rule sets (e.g. AD&D vs.
+  * World of Darkness) plug in different damage formulas without subclassing Avatar.
   */
 trait BattleSystem:
   def damage(attacker: Strength, defender: Strength): Int
@@ -20,13 +19,11 @@ case class Avatar(
     strength: Strength,
     wisdom: Wisdom,
     charisma: Charisma,
-    hitpoints: Hitpoints,
+    hitpoints: Hitpoints
 ):
-  /** `using` makes the BattleSystem an implicit context parameter
-    * resolved at the call site. Compare against
-    * `scalaland_func_final.Character.physicalAttack` which returned
-    * `Option[(Int, Int) => Int]` to defer the formula - here the
-    * formula is pluggable but type-checked.
+  /** `using` makes the BattleSystem an implicit context parameter resolved at the call site.
+    * Compare against `scalaland_func_final.Character.physicalAttack` which returned `Option[(Int,
+    * Int) => Int]` to defer the formula - here the formula is pluggable but type-checked.
     */
   def attack(target: Avatar)(using bs: BattleSystem): Avatar =
     val dmg = bs.damage(strength, target.strength)
@@ -40,9 +37,9 @@ object Avatar:
   /** Smart constructor with named-argument refactor-safety. */
   def fresh(name: String, str: Int, wis: Int, cha: Int): Avatar =
     Avatar(
-      name      = name,
-      strength  = Strength(str),
-      wisdom    = Wisdom(wis),
-      charisma  = Charisma(cha),
-      hitpoints = Hitpoints(str * 2),
+      name = name,
+      strength = Strength(str),
+      wisdom = Wisdom(wis),
+      charisma = Charisma(cha),
+      hitpoints = Hitpoints(str * 2)
     )

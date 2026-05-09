@@ -7,7 +7,7 @@ case class CreatureFeatureSet(
     strength: Int,
     wisdom: Int,
     charisma: Int,
-    hitpoints: Int,
+    hitpoints: Int
 ):
   override def toString: String =
     s"(strength: $strength, wisdom: $wisdom, charisma: $charisma) hitpoints $hitpoints"

@@ -5,19 +5,16 @@ case class MagicalItemList(items: List[MagicalItem] = Nil) {
   def add(item: MagicalItem): MagicalItemList = MagicalItemList(item :: this.items)
 
   def calculateModifier(feature: CreatureFeature.Value): Int = {
-    items.foldLeft(0) { (sum, item) => 
+    items.foldLeft(0) { (sum, item) =>
       sum + item.getModifier(feature)
     }
   }
 
   override def toString: String = {
-    val itemsStr = if (items.length > 0) items.mkString("\n", "\n", "")
-    else ""
+    val itemsStr =
+      if (items.length > 0) items.mkString("\n", "\n", "")
+      else ""
     """---- Magical Items ---- %s
     |-----------------------""".stripMargin.format(itemsStr)
   }
 }
-
-
-
-

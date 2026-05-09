@@ -5,43 +5,41 @@ import scala.collection.mutable.ListBuffer
 class MagicalItemList {
 
   private val items = ListBuffer[MagicalItem]()
-  
+
   def add(item: MagicalItem): Unit = {
     items += item
   }
-  
+
   def strengthModifier: Int = {
     var sum = 0
     for (item <- items) {
-      sum += item.strengthModifier  
+      sum += item.strengthModifier
     }
     sum
   }
-  
+
   def wisdomModifier: Int = {
     var sum = 0
     for (item <- items) {
-      sum += item.wisdomModifier 
+      sum += item.wisdomModifier
     }
     sum
   }
-  
+
   def charismaModifier: Int = {
     var sum = 0
     for (item <- items) {
-      sum += item.charismaModifier 
+      sum += item.charismaModifier
     }
     sum
   }
-  
+
   override def toString: String = {
-    var ret= "---- Magical Items ----"
+    var ret = "---- Magical Items ----"
     for (item <- items) {
-      ret+= "\n "+ item
+      ret += "\n " + item
     }
     ret += "\n-----------------------"
-    ret 
+    ret
   }
 }
-
-

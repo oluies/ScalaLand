@@ -1,18 +1,18 @@
 package com.programmera.scalaland_generic
 
-object CreatureType extends Enumeration{
-   val Elf, Dwarf = Value
+object CreatureType extends Enumeration {
+  val Elf, Dwarf = Value
 }
 
-object ProfessionalType extends Enumeration{
-   val Thief, Warrior, Wizard = Value
+object ProfessionalType extends Enumeration {
+  val Thief, Warrior, Wizard = Value
 }
 
 class Avatar(
-    val name: String, 
+    val name: String,
     optionalFeatures: Option[CreatureFeatureSet],
     optionalItems: Option[MagicalItemList]
-    ) extends Professional {
+) extends Professional {
 
   // Fields
   val items: MagicalItemList = optionalItems.getOrElse(new MagicalItemList())
@@ -32,9 +32,8 @@ class Avatar(
   override def charisma: Int = super.charisma +
     items.calculateModifier(CreatureFeature.Charisma)
 
-  // Private helper method used to update a feature 
-  protected def updateCreatureFeature( newFeatures: CreatureFeatureSet
-      ): Avatar = {
+  // Private helper method used to update a feature
+  protected def updateCreatureFeature(newFeatures: CreatureFeatureSet): Avatar = {
     Avatar(newFeatures, this)
   }
 
@@ -48,10 +47,10 @@ object Avatar {
 
   // Used first time an avatar is created
   def apply(
-      name: String, 
-      creature: CreatureType.Value, 
+      name: String,
+      creature: CreatureType.Value,
       profession: ProfessionalType.Value
-      ): Avatar = {
+  ): Avatar = {
     constructor(name, None, None, creature, profession)
   }
 
@@ -59,57 +58,52 @@ object Avatar {
   def apply(
       features: CreatureFeatureSet,
       avatar: Avatar
-      ): Avatar = {
+  ): Avatar = {
 
     val creatureType = avatar match {
-      case e: Elf     => CreatureType.Elf
-      case d: Dwarf   => CreatureType.Dwarf
+      case e: Elf => CreatureType.Elf
+      case d: Dwarf => CreatureType.Dwarf
     }
 
     val professionalType = avatar match {
-      case t: Thief   => ProfessionalType.Thief
+      case t: Thief => ProfessionalType.Thief
       case w: Warrior => ProfessionalType.Warrior
-      case m: Wizard  => ProfessionalType.Wizard
+      case m: Wizard => ProfessionalType.Wizard
     }
 
-    constructor(avatar.name, Some(features), Some(avatar.items), 
-      creatureType, professionalType)
+    constructor(avatar.name, Some(features), Some(avatar.items), creatureType, professionalType)
   }
 
   // Avatar main factory method
   private def constructor(
-      name: String, 
+      name: String,
       optFeats: Option[CreatureFeatureSet],
       optItems: Option[MagicalItemList],
-      creature: CreatureType.Value, 
+      creature: CreatureType.Value,
       profession: ProfessionalType.Value
-      ): Avatar = {
+  ): Avatar = {
 
     creature match {
       case CreatureType.Dwarf => {
         profession match {
-          case ProfessionalType.Thief => 
+          case ProfessionalType.Thief =>
             new Avatar(name, optFeats, optItems) with Dwarf with Thief
-          case ProfessionalType.Warrior => 
+          case ProfessionalType.Warrior =>
             new Avatar(name, optFeats, optItems) with Dwarf with Warrior
-          case ProfessionalType.Wizard => 
+          case ProfessionalType.Wizard =>
             new Avatar(name, optFeats, optItems) with Dwarf with Wizard
         }
       }
       case CreatureType.Elf => {
         profession match {
-          case ProfessionalType.Thief => 
+          case ProfessionalType.Thief =>
             new Avatar(name, optFeats, optItems) with Elf with Thief
-          case ProfessionalType.Warrior => 
+          case ProfessionalType.Warrior =>
             new Avatar(name, optFeats, optItems) with Elf with Warrior
-          case ProfessionalType.Wizard => 
+          case ProfessionalType.Wizard =>
             new Avatar(name, optFeats, optItems) with Elf with Wizard
         }
       }
     }
   }
 }
-
-
-
-

@@ -14,23 +14,20 @@ class MagicalItemList {
     var sum = 0
     for (item <- items) {
       feature match {
-        case CreatureFeature.Strength =>  sum += item.strengthModifier
-        case CreatureFeature.Wisdom   =>  sum += item.wisdomModifier
-        case CreatureFeature.Charisma =>  sum += item.charismaModifier
+        case CreatureFeature.Strength => sum += item.strengthModifier
+        case CreatureFeature.Wisdom => sum += item.wisdomModifier
+        case CreatureFeature.Charisma => sum += item.charismaModifier
       }
     }
     sum
   }
 
   override def toString: String = {
-    var ret= "---- Magical Items ----"
+    var ret = "---- Magical Items ----"
     for (item <- items) {
-      ret+= "\n "+ item
+      ret += "\n " + item
     }
     ret += "\n-----------------------"
     ret
   }
 }
-
-
-

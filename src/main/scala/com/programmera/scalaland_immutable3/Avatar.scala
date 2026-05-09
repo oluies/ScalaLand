@@ -1,18 +1,18 @@
 package com.programmera.scalaland_immutable3
 
-object CreatureType extends Enumeration{
-   val Elf, Dwarf = Value
+object CreatureType extends Enumeration {
+  val Elf, Dwarf = Value
 }
 
-object ProfessionalType extends Enumeration{
-   val Thief, Warrior, Wizard = Value
+object ProfessionalType extends Enumeration {
+  val Thief, Warrior, Wizard = Value
 }
 
 class Avatar(
-    val name: String, 
+    val name: String,
     optionalFeatures: Option[CreatureFeatureSet],
-    optionalItems: Option[MagicalItemList]) 
-  extends Professional {
+    optionalItems: Option[MagicalItemList]
+) extends Professional {
 
   // Fields
   val items: MagicalItemList = optionalItems.getOrElse(new MagicalItemList())
@@ -29,9 +29,8 @@ class Avatar(
   override def charisma: Int = super.charisma +
     items.calculateModifier(CreatureFeature.Charisma)
 
-  // Private helper method used to update a feature 
-  private def withCreatureFeature(
-      newFeatures: CreatureFeatureSet): Avatar = 
+  // Private helper method used to update a feature
+  private def withCreatureFeature(newFeatures: CreatureFeatureSet): Avatar =
     Avatar(this.items, newFeatures, this)
 
   // Setters
@@ -51,8 +50,8 @@ class Avatar(
 
   // Suffer damage
   def sufferDamage(damage: Int): Avatar = {
-    println("Hitpoints before attack: "+ hitpoints)
-    println("Damage: "+ damage)
+    println("Hitpoints before attack: " + hitpoints)
+    println("Damage: " + damage)
     if (damage > 0) {
       val newHitpoints = hitpoints - damage
       withHitpoints(newHitpoints)
@@ -62,7 +61,7 @@ class Avatar(
   }
 
   // Handy method
-  def addItem(newItem: MagicalItem): Avatar = 
+  def addItem(newItem: MagicalItem): Avatar =
     Avatar(this.items.add(newItem), this._features, this)
 
   // super will call toString in Creature
@@ -73,71 +72,65 @@ object Avatar {
 
   // Used first time an avatar is created
   def apply(
-      name: String, 
-      creature: CreatureType.Value, 
-      profession: ProfessionalType.Value): Avatar = {
+      name: String,
+      creature: CreatureType.Value,
+      profession: ProfessionalType.Value
+  ): Avatar = {
     constructor(name, None, None, creature, profession)
   }
 
   // Used when the avatar already exists
-  def apply(
-      newItems: MagicalItemList,
-      newFeatures: CreatureFeatureSet,
-      avatar: Avatar): Avatar = {
+  def apply(newItems: MagicalItemList, newFeatures: CreatureFeatureSet, avatar: Avatar): Avatar = {
 
     // Warning! Hard to manage this code
     val creatureType = avatar match {
-      case e: Elf     => CreatureType.Elf
-      case d: Dwarf   => CreatureType.Dwarf
+      case e: Elf => CreatureType.Elf
+      case d: Dwarf => CreatureType.Dwarf
       case _ => throw new Exception("Unknown creature type: " + avatar.name)
     }
 
     // Warning! Hard to manage this code
     val professionalType = avatar match {
-      case t: Thief   => ProfessionalType.Thief
+      case t: Thief => ProfessionalType.Thief
       case w: Warrior => ProfessionalType.Warrior
-      case m: Wizard  => ProfessionalType.Wizard
+      case m: Wizard => ProfessionalType.Wizard
       case _ => throw new Exception("Unknown profession: " + avatar.name)
     }
 
-    constructor(avatar.name, Some(newFeatures), Some(newItems), 
-      creatureType, professionalType)
+    constructor(avatar.name, Some(newFeatures), Some(newItems), creatureType, professionalType)
   }
 
   // Avatar main factory method
   private def constructor(
-      name: String, 
+      name: String,
       optFeats: Option[CreatureFeatureSet],
       optItems: Option[MagicalItemList],
-      creature: CreatureType.Value, 
-      profession: ProfessionalType.Value): Avatar = {
+      creature: CreatureType.Value,
+      profession: ProfessionalType.Value
+  ): Avatar = {
 
     // Warning! Hard to manage this code
     creature match {
       case CreatureType.Dwarf => {
         profession match {
-          case ProfessionalType.Thief => 
+          case ProfessionalType.Thief =>
             new Avatar(name, optFeats, optItems) with Dwarf with Thief
-          case ProfessionalType.Warrior => 
+          case ProfessionalType.Warrior =>
             new Avatar(name, optFeats, optItems) with Dwarf with Warrior
-          case ProfessionalType.Wizard => 
+          case ProfessionalType.Wizard =>
             new Avatar(name, optFeats, optItems) with Dwarf with Wizard
         }
       }
       case CreatureType.Elf => {
         profession match {
-          case ProfessionalType.Thief => 
+          case ProfessionalType.Thief =>
             new Avatar(name, optFeats, optItems) with Elf with Thief
-          case ProfessionalType.Warrior => 
+          case ProfessionalType.Warrior =>
             new Avatar(name, optFeats, optItems) with Elf with Warrior
-          case ProfessionalType.Wizard => 
+          case ProfessionalType.Wizard =>
             new Avatar(name, optFeats, optItems) with Elf with Wizard
         }
       }
     }
   }
 }
-
-
-
-

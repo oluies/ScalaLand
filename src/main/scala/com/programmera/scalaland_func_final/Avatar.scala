@@ -1,17 +1,16 @@
 package com.programmera.scalaland_func_final
 
-object RaceType extends Enumeration{
-   val Elf, Dwarf = Value
+object RaceType extends Enumeration {
+  val Elf, Dwarf = Value
 }
-    
-object CharacterType extends Enumeration{
-   val Thief, Warrior, Wizard = Value
+
+object CharacterType extends Enumeration {
+  val Thief, Warrior, Wizard = Value
 }
- 
+
 object Avatar {
- // Avatar factory method
- def apply(name: String, race: RaceType.Value, character: CharacterType.Value
-  ): Avatar = {
+  // Avatar factory method
+  def apply(name: String, race: RaceType.Value, character: CharacterType.Value): Avatar = {
     race match {
       case RaceType.Dwarf => {
         character match {
@@ -33,7 +32,7 @@ object Avatar {
 
 class Avatar(val name: String) extends Character {
   protected var features = generateFeatures
-  val maxHitpoints: Int  = features.strength * 3
+  val maxHitpoints: Int = features.strength * 3
   protected var currentHitpoints = maxHitpoints
 
   protected var items: MagicalItemList = new MagicalItemList()
@@ -50,5 +49,4 @@ class Avatar(val name: String) extends Character {
   }
 
   override def toString: String = super.toString + "\n" + items
-} 
-
+}

@@ -7,19 +7,16 @@ case class Avatar(name: String) extends Professional {
 
   // Initialize class
   generateCreatureFeatures()
- 
+
   // Override getters
-  override def strength = super.strength + 
+  override def strength = super.strength +
     items.calculateModifier(CreatureFeature.Strength)
-  override def wisdom = super.wisdom + 
+  override def wisdom = super.wisdom +
     items.calculateModifier(CreatureFeature.Wisdom)
-  override def charisma = super.charisma + 
+  override def charisma = super.charisma +
     items.calculateModifier(CreatureFeature.Charisma)
 
   // super will call toString in Professional
-  override def toString: String = super.toString + "\n" + items.toString 
+  override def toString: String = super.toString + "\n" + items.toString
 
 }
-
-
-

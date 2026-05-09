@@ -2,7 +2,7 @@ package com.programmera.scalaland_scala3_enum
 
 case class MagicalItem(
     description: String,
-    modifiers: Map[CreatureFeature, Int],
+    modifiers: Map[CreatureFeature, Int]
 ):
   def getModifier(feature: CreatureFeature): Int = modifiers.getOrElse(feature, 0)
 

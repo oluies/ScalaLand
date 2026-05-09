@@ -17,20 +17,20 @@ class AvatarSmokeTest extends AnyFunSuite:
     intercept[IllegalArgumentException](Hitpoints(-1))
 
   test("Hitpoints subtraction floors at 1, never throws"):
-    val hp  = Hitpoints(5)
+    val hp = Hitpoints(5)
     val low = hp - 100
     assert(low.value == 1)
 
   test("Default given BattleSystem applies subtraction"):
     val a = Avatar.fresh("Attacker", str = 10, wis = 5, cha = 5)
-    val b = Avatar.fresh("Target",   str = 4,  wis = 5, cha = 5)
+    val b = Avatar.fresh("Target", str = 4, wis = 5, cha = 5)
     val bAfter = a.attack(b)
     // Default: damage = max(10 - 4, 0) = 6, target hp = max(8 - 6, 1) = 2
     assert(bAfter.hitpoints.value == 2)
 
   test("Explicit `using` selects the brutal ruleset"):
     val a = Avatar.fresh("Attacker", str = 10, wis = 5, cha = 5)
-    val b = Avatar.fresh("Target",   str = 4,  wis = 5, cha = 5)
+    val b = Avatar.fresh("Target", str = 4, wis = 5, cha = 5)
     val bAfter = a.attack(b)(using BattleSystem.brutal)
     // Brutal: damage = max(10 - 8, 0) = 2, target hp = max(8 - 2, 1) = 6
     assert(bAfter.hitpoints.value == 6)

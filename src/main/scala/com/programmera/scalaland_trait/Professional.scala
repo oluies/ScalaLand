@@ -16,13 +16,12 @@ trait Professional extends Creature {
   // Will if successful reduce hitpoints on foe
   def weaponAttack(foe: Creature): Unit = {
     println("Default weaponAttack.")
-    val damage = (this.strength - foe.strength)/3 + DieRoll.roll(1)
+    val damage = (this.strength - foe.strength) / 3 + DieRoll.roll(1)
     sufferDamage(foe, damage)
   }
 
   protected def sufferDamage(foe: Creature, damage: Int): Unit = {
-    println("Damage: "+ damage)
+    println("Damage: " + damage)
     if (damage > 0) foe.hitpoints -= damage
   }
 }
-

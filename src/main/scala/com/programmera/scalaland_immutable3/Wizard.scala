@@ -6,8 +6,6 @@ trait Wizard extends Professional {
   // Good with spells
   override def magicAttack(foe: Creature): Int = {
     println("Wizard using magicAttack.")
-    (this.wisdom - foe.wisdom)/2 + DieRoll.roll(2)
+    (this.wisdom - foe.wisdom) / 2 + DieRoll.roll(2)
   }
-}  
-
-
+}

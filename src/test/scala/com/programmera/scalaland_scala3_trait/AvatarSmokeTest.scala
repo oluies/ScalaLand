@@ -20,7 +20,7 @@ class AvatarSmokeTest extends AnyFunSuite:
 
   test("attackDamage uses Profession.damageMultiplier"):
     val attacker = Avatar("A", Race.Dwarf, Profession.Warrior)
-    val target   = Avatar("T", Race.Elf,   Profession.Wizard)
+    val target = Avatar("T", Race.Elf, Profession.Wizard)
     assert(attacker.attackDamage(target) == (4 - 2) * 2)
 
   test("Sealed Race + Profession enable exhaustive analysis"):

@@ -7,9 +7,7 @@ trait Wizard extends Professional {
   // Good with spells
   override def magicAttack(foe: Creature): Unit = {
     println("Wizard using magicAttack.")
-    val damage = (this.wisdom - foe.wisdom)/2 + DieRoll.roll(2)
+    val damage = (this.wisdom - foe.wisdom) / 2 + DieRoll.roll(2)
     sufferDamage(foe, damage)
   }
-}  
-
-
+}

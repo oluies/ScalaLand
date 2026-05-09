@@ -8,4 +8,3 @@ trait Thief extends Professional {
     strength + DieRoll.roll(1)
   }
 }
-

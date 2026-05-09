@@ -1,6 +1,6 @@
 package com.programmera.scalaland_func_final
 
-object Dice{
+object Dice {
   private val rnd = new scala.util.Random
 
   def roll: Int = rnd.nextInt(6) + 1
@@ -10,5 +10,3 @@ object Dice{
     (1 to noDice).view.map(_ => roll).sum
   }
 }
-
-

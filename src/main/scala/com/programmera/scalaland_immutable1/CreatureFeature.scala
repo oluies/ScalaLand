@@ -1,6 +1,5 @@
-package com.programmera.scalaland_immutable1 
+package com.programmera.scalaland_immutable1
 
 object CreatureFeature extends Enumeration {
-   val Strength, Wisdom, Charisma = Value
+  val Strength, Wisdom, Charisma = Value
 }
-

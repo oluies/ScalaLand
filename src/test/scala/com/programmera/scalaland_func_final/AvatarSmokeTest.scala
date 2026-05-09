@@ -11,7 +11,7 @@ class AvatarSmokeTest extends AnyFunSuite {
   }
 
   test("Thief.climb returns a Some, Wizard.climb returns None") {
-    val thief  = Avatar("T", RaceType.Elf, CharacterType.Thief)
+    val thief = Avatar("T", RaceType.Elf, CharacterType.Thief)
     val wizard = Avatar("W", RaceType.Elf, CharacterType.Wizard)
     assert(thief.climb.isDefined)
     assert(wizard.climb.isEmpty)

@@ -23,10 +23,10 @@ class AvatarSmokeTest extends AnyFunSuite:
 
   test("Magical items add to the relevant CreatureFeature"):
     val a = Avatar("Loaded", Race.Elf, Profession.Thief)
-      .addItem(MagicalItem("Sword",     Map(CreatureFeature.Strength -> 2)))
-      .addItem(MagicalItem("WiseHat",   Map(CreatureFeature.Wisdom   -> 1)))
+      .addItem(MagicalItem("Sword", Map(CreatureFeature.Strength -> 2)))
+      .addItem(MagicalItem("WiseHat", Map(CreatureFeature.Wisdom -> 1)))
     assert(a.strength - a.features.strength == 2)
-    assert(a.wisdom   - a.features.wisdom   == 1)
+    assert(a.wisdom - a.features.wisdom == 1)
 
   test("Profession.climb is exhaustive (compile-time guarantee)"):
     // The compiler proves these three cases cover Profession - no `case _`.
