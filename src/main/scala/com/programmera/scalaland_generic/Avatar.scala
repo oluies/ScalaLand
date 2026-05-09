@@ -21,7 +21,7 @@ class Avatar(
   type SubCreature = Avatar
 
   // Initialize class
-  lazy val features: CreatureFeatureSet =
+  val features: CreatureFeatureSet =
     optionalFeatures.getOrElse(generateCreatureFeatures())
 
   // Override getters
