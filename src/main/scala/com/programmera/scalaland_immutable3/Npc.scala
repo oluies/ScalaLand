@@ -7,7 +7,7 @@ case class Npc(
 
   // Initialize class
   protected val _features: CreatureFeatureSet =
-    optionalFeatures.getOrElse(generateCreatureFeatures)
+    optionalFeatures.getOrElse(generateCreatureFeatures())
 
   // Private helper method used to update a feature 
   private def withCreatureFeature(
