@@ -1,4 +1,4 @@
-ThisBuild / scalaVersion := "3.3.5"
+ThisBuild / scalaVersion := "3.3.7"
 ThisBuild / organization := "com.programmera"
 ThisBuild / version := "2.0-SNAPSHOT"
 ThisBuild / semanticdbEnabled := true
