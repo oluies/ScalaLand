@@ -10,8 +10,15 @@ on:
     - cron: '0 4 * * *'   # 04:00 UTC daily
   workflow_dispatch:
 
+# Steward needs to push branches and open PRs. The default
+# GITHUB_TOKEN is read-only - explicitly opt in to write access.
+# Note: the repo-level setting
+#   Settings → Actions → General → Workflow permissions
+#     → "Allow GitHub Actions to create and approve pull requests"
+# must ALSO be enabled for PR creation to succeed.
 permissions:
-  contents: read
+  contents: write
+  pull-requests: write
 
 jobs:
   steward:
