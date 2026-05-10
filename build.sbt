@@ -13,7 +13,13 @@ lazy val root = (project in file("."))
       "-deprecation",
       "-feature",
       "-Xfatal-warnings",
-      "-Wunused:all",
+      // Scala 3.3.7 made -Wunused:all flag legacy pedagogical
+      // patterns (case e: Elf => discriminator, default-method
+      // unused-foe params, for-loop var i used only as iteration
+      // count). The book labels these "Warning! Hard to manage
+      // this code" - they're teaching examples, intentional.
+      // Stay on imports-only to keep import hygiene.
+      "-Wunused:imports",
       "-explain"
     ),
     // Exclude package-object files from scalafix. ExplicitResultTypes
