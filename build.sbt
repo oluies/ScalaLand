@@ -7,7 +7,7 @@ ThisBuild / semanticdbVersion := scalafixSemanticdb.revision
 lazy val root = (project in file("."))
   .settings(
     name := "ScalaLand",
-    libraryDependencies += "org.scalatest" %% "scalatest" % "3.2.19" % Test,
+    libraryDependencies += "org.scalatest" %% "scalatest" % "3.2.20" % Test,
     scalacOptions ++= Seq(
       "-source:3.3",
       "-deprecation",
