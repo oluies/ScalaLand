@@ -1,4 +1,4 @@
-ThisBuild / scalaVersion := "3.3.7"
+ThisBuild / scalaVersion := "3.3.8"
 ThisBuild / organization := "com.programmera"
 ThisBuild / version := "2.0-SNAPSHOT"
 ThisBuild / semanticdbEnabled := true
@@ -13,7 +13,7 @@ lazy val root = (project in file("."))
       "-deprecation",
       "-feature",
       "-Xfatal-warnings",
-      // Scala 3.3.7 made -Wunused:all flag legacy pedagogical
+      // Scala 3.3.8 made -Wunused:all flag legacy pedagogical
       // patterns (case e: Elf => discriminator, default-method
       // unused-foe params, for-loop var i used only as iteration
       // count). The book labels these "Warning! Hard to manage
