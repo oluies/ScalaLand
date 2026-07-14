@@ -1,7 +1,7 @@
 # ScalaLand
 
 [![CI](https://github.com/oluies/ScalaLand/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/oluies/ScalaLand/actions/workflows/ci.yml)
-[![Scala](https://img.shields.io/badge/scala-3.3.7%20LTS-DC322F.svg)](https://www.scala-lang.org/)
+[![Scala](https://img.shields.io/badge/scala-3.3.8%20LTS-DC322F.svg)](https://www.scala-lang.org/)
 [![sbt](https://img.shields.io/badge/sbt-2.0.2-blue.svg)](https://www.scala-sbt.org/)
 [![Scala Steward](https://img.shields.io/badge/Scala_Steward-helping-blue.svg?style=flat&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAQCAMAAAARSr4IAAAAVFBMVEUAAACHjojlOy5NWlrKzcYRKjGFjIbp293YycuLa3pYY2LSqql4f3pCUFTgSjNodYRmcXUsPD/NTTbjRS+2jomhgnzNc223cGvZS0HaSD0XLjbaSjElhIr+AAAAAXRSTlMAQObYZgAAAHlJREFUCNdNyosOwyAIhWHAQS1Vt7a77/3fcxxdmv0xJvhBAKMoFtR/TVNbrEE4C1vR2sLQn0ftH3o/we2nhRXyAOWz+wN5vhXyu/gAeIvxHDAaB9oAqCcYaj4otN2mHIItnYIvwCUIIcykCIzfcQAAAABJRU5ErkJggg==)](https://scala-steward.org)
 **[Ett första steg i Scala](https://github.com/oluies/ScalaBook)**.
@@ -106,7 +106,7 @@ from earlier chapters via the package object.
 
 | | |
 |---|---|
-| Scala | 3.3.7 (LTS) |
+| Scala | 3.3.8 (LTS) |
 | sbt | 2.0.2 |
 | JDK | 17 (also tested on 21) |
 | Tests | 37, all green |
@@ -128,7 +128,7 @@ Note (sbt 2): plain `sbt test` is incremental and may run zero tests on
 an up-to-date build — use `testFull` for the whole suite. Multiple
 commands on one invocation must be quoted and separated by `;`.
 
-The first sbt invocation will fetch Scala 3.3.7, ScalaTest 3.2.20 and
+The first sbt invocation will fetch Scala 3.3.8, ScalaTest 3.2.20 and
 the scalafix/scalafmt plugins.
 
 ## Layout — original (Scala 2 era) chapters
