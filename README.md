@@ -3,12 +3,108 @@
 Companion source repository for the Swedish Scala textbook
 **[Ett första steg i Scala](https://github.com/oluies/ScalaBook)**.
 
+## Overview
+
+ScalaLand is a small fantasy role-playing domain — creatures with
+strength/wisdom/charisma, races (Elf, Dwarf), professions (Warrior,
+Wizard, Thief) and magical items — that the book reimplements chapter by
+chapter. Each `com.programmera.scalaland*` package is one chapter's take
+on the same model: first with plain classes, then traits and mixin
+composition, then immutability, functional style, and generics. The
+Scala 3 sibling packages redo four chapters with modern idioms (`enum`,
+trait parameters, `opaque type`, `given`/`using`) so old and new can be
+read side by side.
+
+The trait chapter's model is the heart of the book. A race and a
+profession are mixed in at instantiation time — an `Avatar` without a
+race fails on construction:
+
+```scala
+val bilbo = new Avatar("Bilbo") with Elf with Thief   // ok
+Avatar("RogueWithoutRace")                            // IllegalArgumentException
+```
+
+### Class diagram (`scalaland_trait`)
+
+```mermaid
+classDiagram
+    direction TB
+
+    class Creature {
+        <<trait>>
+        +name: String*
+        +strength: Int
+        +wisdom: Int
+        +charisma: Int
+        +hitpoints: Int
+        #generateCreatureFeatures()
+        +toString() String
+    }
+
+    class Elf {
+        <<trait>>
+        #generateCreatureFeatures()
+    }
+    class Dwarf {
+        <<trait>>
+        #generateCreatureFeatures()
+    }
+
+    class Professional {
+        <<trait>>
+        +climb() Int
+        +magicAttack(foe) Unit
+        +weaponAttack(foe) Unit
+        #sufferDamage(foe, damage)
+    }
+
+    class Warrior {
+        <<trait>>
+        +climb() Int
+        +weaponAttack(foe) Unit
+    }
+    class Wizard {
+        <<trait>>
+        +magicAttack(foe) Unit
+    }
+    class Thief {
+        <<trait>>
+        +climb() Int
+    }
+
+    class Avatar {
+        <<case class>>
+        +name: String
+        +items: MagicalItemList
+    }
+
+    class MagicalItemList
+    class DeathException
+
+    Creature <|-- Elf : race
+    Creature <|-- Dwarf : race
+    Creature <|-- Professional
+    Professional <|-- Warrior : profession
+    Professional <|-- Wizard : profession
+    Professional <|-- Thief : profession
+    Professional <|-- Avatar
+    Avatar o-- MagicalItemList : items
+    Creature ..> DeathException : hitpoints = 0
+```
+
+`Creature` holds the mutable stats and throws `DeathException` when
+hitpoints reach zero; the race traits override stat generation, the
+profession traits override combat and climbing, and `Avatar` adds
+magical items whose modifiers stack on top of the base stats. The
+`DieRoll`, `MagicalItem*` and `CreatureFeature` helpers are re-exported
+from earlier chapters via the package object.
+
 ## Status
 
 | | |
 |---|---|
-| Scala | 3.3.5 (LTS) |
-| sbt | 1.10.7 |
+| Scala | 3.3.7 (LTS) |
+| sbt | 2.0.2 |
 | JDK | 17 (also tested on 21) |
 | Tests | 37, all green |
 
@@ -19,13 +115,17 @@ and per-phase commit log.
 ## Build
 
 ```bash
-sbt compile          # compile all sources
-sbt test             # run smoke tests
-sbt scalafmtCheckAll # check formatting
-sbt scalafix --check # check lint rules
+sbt compile                             # compile all sources
+sbt testFull                            # run all smoke tests
+sbt "scalafmtCheckAll; scalafmtSbtCheck" # check formatting
+sbt "scalafixAll --check"               # check lint rules
 ```
 
-The first sbt invocation will fetch Scala 3.3.5, ScalaTest 3.2.19 and
+Note (sbt 2): plain `sbt test` is incremental and may run zero tests on
+an up-to-date build — use `testFull` for the whole suite. Multiple
+commands on one invocation must be quoted and separated by `;`.
+
+The first sbt invocation will fetch Scala 3.3.7, ScalaTest 3.2.20 and
 the scalafix/scalafmt plugins.
 
 ## Layout — original (Scala 2 era) chapters
