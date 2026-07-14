@@ -12,7 +12,7 @@ lazy val root = (project in file("."))
       "-source:3.3",
       "-deprecation",
       "-feature",
-      "-Xfatal-warnings",
+      "-Werror",
       // Scala 3.3.8 made -Wunused:all flag legacy pedagogical
       // patterns (case e: Elf => discriminator, default-method
       // unused-foe params, for-loop var i used only as iteration
