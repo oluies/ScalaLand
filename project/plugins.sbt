@@ -1,5 +1,5 @@
 // Phase 2: scalafix mechanical rewrites
-addSbtPlugin("ch.epfl.scala" % "sbt-scalafix" % "0.14.8")
+addSbtPlugin("ch.epfl.scala" % "sbt-scalafix" % "0.14.9")
 
 // Phase 6: scalafmt
 addSbtPlugin("org.scalameta" % "sbt-scalafmt" % "2.6.2")
