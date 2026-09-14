@@ -33,6 +33,15 @@ jobs:
       - name: Set up sbt
         uses: sbt/setup-sbt@v1
 
+      # sbt 2 keeps a machine-wide action cache that `clean` does not touch and
+      # that outlives a plugin bump. Bumping sbt-scalafix moves semanticdbVersion
+      # (scalafixSemanticdb.revision), but a cache hit replays compile outputs
+      # built against the OLD semanticdb, so `scalafixAll --check` then reports
+      # "SemanticDB not found" for every source. Start each job from a cold
+      # action cache so the compiler actually runs.
+      - name: Clear sbt action cache
+        run: rm -rf ~/.cache/sbt/v2
+
       - name: Format check
         run: sbt "scalafmtCheckAll; scalafmtSbtCheck"
 
